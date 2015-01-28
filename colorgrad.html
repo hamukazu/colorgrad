@@ -1,0 +1,43 @@
+<html>
+<head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="colorgrad.js"></script>
+<script type="text/javascript">
+function run()
+{
+  m=$("#modified");
+  m.empty();
+  color_from=form1.color_from.value;
+  color_to=form1.color_to.value;
+  n=form1.number.value;
+  console.log(color_from);
+  console.log(color_to);
+  console.log(n);
+  colors=gradient(color_from,color_to,parseInt(n));
+  console.log(colors);
+  s="<table>"
+  for (i=0; i<colors.length; ++i) {
+    c=colors[i];
+    s+="<tr><td bgcolor=\"#"+c+"\">"+c+"</td></tr>";
+  }
+  s+="</table>";
+  console.log(s);
+  $("#modified").append(s);
+  return false;
+}
+</script>
+</head>
+<body>
+<h1>Color Gradient Generator</h1>
+<h2>カラーグラデーション作成器</h2>
+<form name="form1" onSubmit="return run()">
+初期色 Source color: <input type="text" name="color_from" value="ff0000"/><br/>
+終端色 Destination color: <input type="text" name="color_to" value="008000"/><br/>
+色数 Number of colors: <input type="text" name="number" value="10"/>
+<input type="submit">
+</form>
+<div id="modified"></div>
+<p>Source code is available <a href="https://github.com/hamukazu/colorgrad">here</a>.</p>
+<p>Copyright (c) 2015, Kimikazu Kato</p>
+</body>
+</html>
